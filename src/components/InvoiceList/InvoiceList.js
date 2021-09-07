@@ -8,6 +8,7 @@ import "./InvoiceList.scss";
 
 const InvoiceList = ({ setShowModal, totalInvoices, setTotalInvoices }) => {
   const [getData, setGetData] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     db.collection("data").onSnapshot((querySnapshot) => {
@@ -47,11 +48,45 @@ const InvoiceList = ({ setShowModal, totalInvoices, setTotalInvoices }) => {
 
       <div className="list-container">
         {getData.map((data) => (
-          <div key={data.id} className="list-container__item">
-            <div>{`#${data.id.slice(0, 6)}`}</div>
-            <div>{data.value.cityFrom}</div>
-            <div>{data.value.countryFrom}</div>
-            <IoIosArrowForward className="forward-icon"/>
+          <div
+            key={data.id}
+            className={`list-container__item ${
+              data-key == data.id && open ? "open" : ""
+            }`}
+          >
+            {!open ? (
+              <React.Fragment>
+                <div>{`#${data.id.slice(0, 6)}`}</div>
+                <div>{data.value.cityFrom}</div>
+                <div>{data.value.countryFrom}</div>
+                <div className="status-icon">
+                  <span className="status-circle"></span>Pending
+                </div>
+                <button
+                  className="forward-btn"
+                  onClick={() => setOpen(!open)}
+                  data-key={data.id}
+                >
+                  <IoIosArrowForward className="forward-icon" />
+                </button>
+              </React.Fragment>
+            ) : (
+              <div>
+                <div>{`#${data.id.slice(0, 6)}`}</div>
+                <div>UI/UX</div>
+
+                <div>Adress to</div>
+
+                <div>Invoice Data</div>
+                <div>....</div>
+
+                <div>Bill To</div>
+                <div>...</div>
+
+                <div>Sent To</div>
+                <div>email to...</div>
+              </div>
+            )}
           </div>
         ))}
 
