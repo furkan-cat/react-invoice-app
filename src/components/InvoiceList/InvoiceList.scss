@@ -1,0 +1,67 @@
+.invoice-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 1000px;
+  margin-top: 5em;
+  z-index: 1;
+  color: antiquewhite;
+  &_inner-container {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.list-container {
+  font-size: 22px;
+  &__item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #932432;
+    border-radius: 12px;
+    margin-top: 2em;
+    padding: 1em;
+  }
+}
+
+.button {
+  border: none;
+  outline: none;
+  font-size: 50px;
+  height: 50px;
+  cursor: pointer;
+  &:hover {
+    border-radius: 9px;
+  }
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  background-color: #151524;
+  color: white;
+  &:hover {
+    color: #151524;
+    background-color: #932432;
+    border-radius: 7px;
+  }
+}
+
+.totalInvoice {
+  background-color: #932432;
+  font-size: 16px;
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+}
+
+.forward-icon {
+  box-shadow: #661923 0px 2px 8px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: #d6c6c8 0px 2px 8px 0px;
+  }
+}
