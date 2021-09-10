@@ -16,19 +16,20 @@
 
 .list-container {
   font-size: 22px;
+
   &__item {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     background: #932432;
     border-radius: 12px;
     margin-top: 2em;
     padding: 1em;
+    &--open {
+      display: flex;
+      flex-direction: column;
+      background-color: #d6c6c8;
+    }
   }
 }
-.open{
 
-}
 .button {
   border: none;
   outline: none;
@@ -73,7 +74,7 @@
   background-color: #774d2d;
 }
 
-.forward-btn{
+.forward-btn {
   background-color: transparent;
   border: none;
 }
@@ -86,4 +87,22 @@
   &:hover {
     box-shadow: #d6c6c8 0px 2px 8px 0px;
   }
+}
+.open-main-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.close-main-container{
+  display: none;
+}
+
+.detail-open-container {
+  display: block;
+  display: flex;
+  justify-content: space-around;
+}
+
+.detail-close-container{
+  display: none;
 }
