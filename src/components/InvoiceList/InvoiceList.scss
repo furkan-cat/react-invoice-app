@@ -16,7 +16,6 @@
 
 .list-container {
   font-size: 22px;
-
   &__item {
     background: #932432;
     border-radius: 12px;
@@ -60,18 +59,17 @@
   border-radius: 4px;
 }
 
-.status-circle {
-  width: 10px;
-  height: 10px;
-  color: #e6964a;
-}
-
 .status-icon {
   border: none;
   border-radius: 8px;
   padding: 0.5em 1.5em;
   color: #e6964a;
   background-color: #774d2d;
+}
+
+.paid {
+  color: #fff;
+  background-color: #319c31;
 }
 
 .forward-btn {
@@ -91,18 +89,62 @@
 .open-main-container {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
-.close-main-container{
+.close-main-container {
   display: none;
 }
 
 .detail-open-container {
-  display: block;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  &__first-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    & .edit {
+      background-color: rgba(210, 219, 210, 0.753);
+    }
+    & .delete {
+      background-color: rgb(238, 77, 19);
+    }
+    & .mark {
+      background-color: rgb(50, 143, 50);
+    }
+    & .edit,
+    .delete,
+    .mark {
+      margin: 1em;
+      padding: 1.3em 1.5em;
+      border-radius: 12px;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    & .edit:hover,
+    .delete:hover,
+    .mark:hover {
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    }
+    &__inner-item {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__second-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
 
-.detail-close-container{
+.detail-close-container {
   display: none;
+}
+
+.left {
+  margin-left: 1em;
 }

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import db from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
 
 const useForm = () => {
   const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState(false);
   const [values, setValues] = useState({
     streetAddressFrom: "",
     streetAddressTo: "",
@@ -15,11 +15,22 @@ const useForm = () => {
     countryTo: "",
     nameTo: "",
     emailTo: "",
+    invoiceDate: "",
+    select: "",
+    description: "",
+    paymentDueDate: "",
+    status: status,
   });
+
+  const handleStatus = (data) => {
+    db.collection("data").doc(data.id).update({ status: !status });
+  };
+
   const handleChange = async (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,6 +46,11 @@ const useForm = () => {
         streetAddressTo: values.streetAddressTo,
         zipCodeFrom: values.zipCodeFrom,
         zipCodeTo: values.zipCodeTo,
+        invoiceDate: values.invoiceDate,
+        select: values.select,
+        description: values.description,
+        paymentDueDate: values.paymentDueDate,
+        status: status,
       })
       .then((docRef) => {
         console.log("Data Successfully Submitted", docRef.id);
@@ -44,7 +60,7 @@ const useForm = () => {
       });
   };
 
-  return { handleChange, values, handleSubmit };
+  return { handleChange, values, handleSubmit, handleStatus, status };
 };
 
 export default useForm;
